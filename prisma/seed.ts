@@ -19,16 +19,16 @@ async function main() {
 
   // 2. إدخال المحاضرين (10 محاضرين)
   const instructorsData = [
-    { name: "أشرف أنور", bio: "قائد هيئة التدريب، وقائد عشائر جامعة عين شمس سابقاً، وقائد مكتب تدريب جوالة هندسة عين شمس، ومدير عام المعلومات وقواعد البيانات بشركة جابكو للبترول", imagePath: "/images/instructors/ashraf-anwar.jpg" },
-    { name: "فاطمة الزهراء", bio: "Senior Sustainability Engineer ومكتب تدريب الهندسة، متخصصة في إدارة الوقت والأولويات", imagePath: "/images/instructors/fatma-alzahraa.jpg" },
-    { name: "أحمد علي", bio: "المدير الإقليمي بشركة فيرتيميد انترناشونال، وقائد منتخب الجامعة وعضو مكتب تدريب عين شمس سابقاً", imagePath: "/images/instructors/ahmed-ali.jpg" },
-    { name: "وليد رمضان", bio: "محاضر دولي (PMP, PRMG) واستشاري إدارة المشروعات، وقائد سابق لعشيرة جوالة هندسة عين شمس", imagePath: "/images/instructors/walid-ramadan.jpg" },
-    { name: "مريم مانشي", bio: "مهندسة طاقة متجددة ورائدة كبرى سابقاً بعشيرة الجوالة، متخصصة في التحفيز وإشعال الشغف", imagePath: "/images/instructors/mariam-manshi.jpg" },
-    { name: "أحمد بحري", bio: "مساعد كبير مفوضي الكشافة البحرية المصرية، والمستشار القانوني لبحرية القاهرة وعضو مكتب التدريب", imagePath: "/images/instructors/ahmed-bahri.jpg" },
-    { name: "يوسف شوكت", bio: "Civil Engineer & Team Leader، ومفوض الجوالة ببحرية القاهرة وقائد عشائر جامعة عين شمس وهندسة الأسبق", imagePath: "/images/instructors/yousef-shawkat.jpg" },
-    { name: "حمدي فتحي", bio: "مدير عام بالبنك الأهلي المصري وقائد سابق لعشيرة الجوالة، ومستشار إدارة المخاطر وتأهيل القادة", imagePath: "/images/instructors/hamdi-fathi.jpg" },
-    { name: "أحمد ماهر", bio: "متخصص في قيادة التغيير وإدارة المقاومة المؤسسية وتأهيل فرق العمل", imagePath: "/images/instructors/ahmed-maher.jpg" },
-    { name: "صلاح التوني", bio: "مدير مشروعات وقائد سابق لعشيرة جوالة هندسة عين شمس، وخبير حل المشكلات المعقدة واتخاذ القرار", imagePath: "/images/instructors/salah-eltouni.jpg" },
+    { name: "أشرف أنور", bio: "قائد ومحاضر متميز في التنمية البشرية وقيادة الذات والإرث الكشفي. قائد عشائر جامعة عين شمس سابقاً، وقائد مكتب تدريب جوالة هندسة عين شمس، ومدير عام المعلومات وقواعد البيانات بشركة جابكو للبترول", imagePath: "/images/instructors/ashraf-anwar.jpg" },
+    { name: "فاطمة الزهراء", bio: "Senior Sustainability Engineer ومكتب تدريب الهندسة، متخصصة في إدارة الوقت والأولويات والتطوير المؤسسي", imagePath: "/images/instructors/fatma-alzahraa.jpg" },
+    { name: "أحمد علي", bio: "خبير في بناء وتطوير مهارات القادة الشبان. المدير الإقليمي بشركة فيرتيميد انترناشونال، وقائد منتخب الجامعة وعضو مكتب تدريب عين شمس سابقاً", imagePath: "/images/instructors/ahmed-ali.jpg" },
+    { name: "وليد رمضان", bio: "مدرب متألق في ديناميكيات فرق العمل. محاضر دولي (PMP, PRMG) واستشاري إدارة المشروعات، وقائد سابق لعشيرة جوالة هندسة عين شمس", imagePath: "/images/instructors/walid-ramadan.jpg" },
+    { name: "مريم مانشي", bio: "مهندسة طاقة متجددة ورائدة كبرى سابقاً بعشيرة الجوالة، متخصصة في التحفيز وإشعال الشغف وتوجيه الطاقات", imagePath: "/images/instructors/mariam-manshi.jpg" },
+    { name: "أحمد بحري", bio: "مستشار التخطيط الاستراتيجي وصناعة الرؤية المستقبلية. مساعد كبير مفوضي الكشافة البحرية المصرية، والمستشار القانوني لبحرية القاهرة وعضو مكتب التدريب", imagePath: "/images/instructors/ahmed-bahri.jpg" },
+    { name: "يوسف شوكت", bio: "باحث ومدرب في استراتيجيات الذكاءات المتعددة. Civil Engineer & Team Leader، ومفوض الجوالة ببحرية القاهرة وقائد عشائر جامعة عين شمس وهندسة الأسبق", imagePath: "/images/instructors/yousef-shawkat.jpg" },
+    { name: "حمدي فتحي", bio: "مدير عام بالبنك الأهلي المصري وقائد سابق لعشيرة الجوالة، ومستشار إدارة المخاطر وتأهيل قادة المستقبل", imagePath: "/images/instructors/hamdi-fathi.jpg" },
+    { name: "أحمد ماهر", bio: "متخصص في قيادة التغيير وإدارة المقاومة المؤسسية. مدير مشاريع، ورئيس لجنة المنح والشراكات بالاتحاد العام للكشافة والمرشدات", imagePath: "/images/instructors/ahmed-maher.jpg" },
+    { name: "صلاح التوني", bio: "مدير مشروعات وقائد سابق لعشيرة جوالة هندسة عين شمس، وخبير حل المشكلات المعقدة واتخاذ القرارات الاستراتيجية", imagePath: "/images/instructors/salah-eltouni.jpg" },
   ];
 
   const instructorMap: Record<string, number> = {};
