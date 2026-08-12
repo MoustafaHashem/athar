@@ -185,7 +185,7 @@ export default function GeneralFeedbackSection() {
           <h3 className="font-extrabold text-sm text-olive-dark flex items-center gap-2">
             {activeCategory === "PROGRAM" && "🌟 تقييم دراسة إعداد القادة بوجه عام"}
             {activeCategory === "TEAM_MEMBER" && "👔 تقييم أعضاء هيكل القيادة والتنظيم"}
-            {activeCategory === "INSTRUCTOR" && "🎙️ تقييم السادة القادة والمحاضرين"}
+            {activeCategory === "INSTRUCTOR" && "🎙️ رسالة للسادة القادة والمحاضرين"}
             {activeCategory === "MEDIA" && "📸 تقييم التغطية الإعلامية وفريق الميديا والتصوير"}
             {activeCategory === "CATERING" && "🍱 تقييم التغذية ومواعيد جودة الوجبات"}
           </h3>
@@ -235,7 +235,7 @@ export default function GeneralFeedbackSection() {
         {activeCategory === "INSTRUCTOR" && (
           <div className="space-y-2">
             <label className="block text-xs font-black text-olive">
-              اختر المحاضر المراد تقييمه:
+              اختر المحاضر لترك رسالة له:
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
               {INSTRUCTORS.map((inst) => (
