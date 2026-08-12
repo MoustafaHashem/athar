@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-sand text-dark font-cairo antialiased min-h-screen selection:bg-gold selection:text-white;
+  }
+}
+
+/* Custom visual utilities */
+.river-pattern {
+  background-color: #3D5229;
+  background-image: radial-gradient(#C9922B 0.75px, transparent 0.75px), radial-gradient(#C9922B 0.75px, #3D5229 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px -5px rgba(201, 146, 43, 0.4);
+}
+
+.olive-gradient {
+  background: linear-gradient(135deg, #24331A 0%, #3D5229 50%, #536F39 100%);
+}
+
+.sand-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(61, 82, 41, 0.12);
+}

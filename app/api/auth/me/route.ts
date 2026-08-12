@@ -1,0 +1,27 @@
+import { NextResponse } from "next/server";
+import { getCurrentUser } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+
+export async function GET() {
+  const currentToken = await getCurrentUser();
+  if (!currentToken) {
+    return NextResponse.json({ user: null }, { status: 401 });
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { id: currentToken.userId },
+    select: {
+      id: true,
+      username: true,
+      role: true,
+      totalScore: true,
+      createdAt: true,
+    },
+  });
+
+  if (!user) {
+    return NextResponse.json({ user: null }, { status: 404 });
+  }
+
+  return NextResponse.json({ user });
+}
