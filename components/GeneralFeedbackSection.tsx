@@ -250,7 +250,7 @@ export default function GeneralFeedbackSection() {
                   }`}
                 >
                   <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gold bg-sand">
-                    <Image src={inst.imagePath} alt={inst.name} width={32} height={32} className="w-full h-full object-cover" />
+                    <Image src={inst.imagePath} alt={inst.name} width={32} height={32} className={`w-full h-full object-cover ${inst.name.includes("أشرف") ? "object-[center_15%]" : "object-center"}`} />
                   </div>
                   <div className="overflow-hidden">
                     <p className="text-xs font-black truncate">{inst.name}</p>

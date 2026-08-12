@@ -463,7 +463,7 @@ export default function LandingPage() {
                       alt={inst.name}
                       width={96}
                       height={96}
-                      className="w-full h-full object-cover object-center rounded-full"
+                      className={`w-full h-full object-cover rounded-full ${inst.name.includes("أشرف") ? "object-[center_15%]" : "object-center"}`}
                     />
                   ) : (
                     <div className="w-full h-full rounded-full bg-sand flex items-center justify-center text-olive">
