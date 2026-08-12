@@ -16,8 +16,8 @@ import {
 } from "lucide-react";
 
 const TEAM_MEMBERS = [
-  { name: "تسنيم أحمد", role: "مساعدة قائد الدراسة", imagePath: "/images/team/tasneem-ahmed.jpg" },
   { name: "أحمد مشعل", role: "قائد الدراسة", imagePath: "/images/team/ahmed-meshal.jpg" },
+  { name: "تسنيم أحمد", role: "مساعدة قائد الدراسة", imagePath: "/images/team/tasneem-ahmed.jpg" },
   { name: "مصطفى هاشم", role: "منفذ برامج", imagePath: "/images/team/mostafa-hashem.jpg" },
   { name: "مريم بحر", role: "منفذة برامج", imagePath: "/images/team/mariam-bahr.jpg" },
   { name: "نور خالد", role: "قائدة السكرتارية", imagePath: "/images/team/nour-khaled.jpg" },
