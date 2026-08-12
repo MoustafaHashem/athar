@@ -13,7 +13,7 @@ export default function LandingPage() {
     },
     {
       name: "تسنيم أحمد",
-      role: "قائدة الدراسة",
+      role: "مساعدة قائد الدراسة",
       imagePath: "/images/team/tasneem-ahmed.jpg",
       badgeColor: "bg-gold text-olive-dark border-gold/40",
     },
