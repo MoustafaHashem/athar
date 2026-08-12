@@ -215,8 +215,8 @@ export default function LandingPage() {
               </div>
             </div>
             <div>
-              <h1 className="text-xl font-black text-white">منصة أثر</h1>
-              <p className="text-xs text-gold font-bold">عشيرة جوالة كلية الهندسة — جامعة عين شمس</p>
+              <h1 className="text-lg sm:text-xl font-black text-white">منصة أثر</h1>
+              <p className="text-xs text-gold font-bold hidden sm:block">عشيرة جوالة كلية الهندسة — جامعة عين شمس</p>
             </div>
           </div>
 
@@ -248,7 +248,7 @@ export default function LandingPage() {
 
           {/* Dual Big Logos */}
           <div className="flex items-center justify-center gap-4 md:gap-6">
-            <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-gold p-1 bg-white shadow-2xl hover:scale-105 transition-transform">
+            <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full border-4 border-gold p-1 bg-white shadow-2xl hover:scale-105 transition-transform">
               <Image
                 src="/images/branding/clan-logo.png"
                 alt="لوجو عشيرة الجوالة"
@@ -258,7 +258,7 @@ export default function LandingPage() {
                 priority
               />
             </div>
-            <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-gold p-1 bg-white shadow-2xl hover:scale-105 transition-transform">
+            <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full border-4 border-gold p-1 bg-white shadow-2xl hover:scale-105 transition-transform">
               <Image
                 src="/images/branding/logo.jpg"
                 alt="لوجو أثر"
@@ -282,7 +282,7 @@ export default function LandingPage() {
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/login"
-              className="w-full sm:w-auto px-8 py-4 bg-gold hover:bg-gold-light text-olive-dark font-black rounded-2xl text-base shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gold hover:bg-gold-light text-olive-dark font-black rounded-2xl text-sm sm:text-base shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-2"
             >
               <Award className="w-5 h-5" />
               <span>دخول منصة الكويزات والنقاط</span>
@@ -401,8 +401,8 @@ export default function LandingPage() {
                   </span>
                 </div>
 
-                <div className="overflow-x-auto">
-                  <table className="w-full text-right text-xs sm:text-sm">
+                <div className="overflow-x-auto w-full">
+                  <table className="w-full min-w-[500px] text-right text-xs sm:text-sm">
                     <thead>
                       <tr className="bg-olive/10 text-olive-dark font-extrabold">
                         <th className="py-2.5 px-3 rounded-r-xl">الوقت</th>
