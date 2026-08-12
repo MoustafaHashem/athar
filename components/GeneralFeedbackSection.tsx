@@ -27,7 +27,7 @@ const TEAM_MEMBERS = [
 ];
 
 const INSTRUCTORS = [
-  { name: "ق. أشرف أنور", role: "قائد مكتب تدريب جوالة هندسة عين شمس", imagePath: "/images/instructors/ashraf-anwar.jpg" },
+  { name: "ق. أشرف أنور", role: "قائد مكتب تدريب جوالة هندسة عين شمس", imagePath: "/images/instructors/ashraf-anwar.png" },
   { name: "ق. فاطمة الزهراء", role: "مكتب تدريب الهندسة", imagePath: "/images/instructors/fatma-alzahraa.jpg" },
   { name: "ق. أحمد علي", role: "عضو مكتب التدريب", imagePath: "/images/instructors/ahmed-ali.jpg" },
   { name: "ق. وليد رمضان", role: "استشاري إدارة المشروعات", imagePath: "/images/instructors/walid-ramadan.jpg" },

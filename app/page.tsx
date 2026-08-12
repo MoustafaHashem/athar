@@ -68,7 +68,7 @@ export default function LandingPage() {
     {
       name: "ق. أشرف أنور",
       bio: "قائد ومحاضر متميز في التنمية البشرية وقيادة الذات والإرث الكشفي. قائد عشائر جامعة عين شمس سابقاً، وقائد مكتب تدريب جوالة هندسة عين شمس، ومدير عام المعلومات وقواعد البيانات بشركة جابكو للبترول",
-      imagePath: "/images/instructors/ashraf-anwar.jpg",
+      imagePath: "/images/instructors/ashraf-anwar.png",
       firstOrder: 1,
       sessions: ["المحاضرة #1", "المحاضرة #2", "المحاضرة #6", "المحاضرة #10"],
     },
