@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 const TEAM_MEMBERS = [
-  { name: "تسنيم أحمد", role: "قائدة الدراسة", imagePath: "/images/team/tasneem-ahmed.jpg" },
+  { name: "تسنيم أحمد", role: "مساعدة قائد الدراسة", imagePath: "/images/team/tasneem-ahmed.jpg" },
   { name: "أحمد مشعل", role: "قائد الدراسة", imagePath: "/images/team/ahmed-meshal.jpg" },
   { name: "مصطفى هاشم", role: "منفذ برامج", imagePath: "/images/team/mostafa-hashem.jpg" },
   { name: "مريم بحر", role: "منفذة برامج", imagePath: "/images/team/mariam-bahr.jpg" },
@@ -27,7 +27,7 @@ const TEAM_MEMBERS = [
 ];
 
 const INSTRUCTORS = [
-  { name: "ق. أشرف أنور", role: "قائد هيئة التدريب", imagePath: "/images/instructors/ashraf-anwar.jpg" },
+  { name: "ق. أشرف أنور", role: "قائد مكتب تدريب جوالة هندسة عين شمس", imagePath: "/images/instructors/ashraf-anwar.jpg" },
   { name: "ق. فاطمة الزهراء", role: "مكتب تدريب الهندسة", imagePath: "/images/instructors/fatma-alzahraa.jpg" },
   { name: "ق. أحمد علي", role: "عضو مكتب التدريب", imagePath: "/images/instructors/ahmed-ali.jpg" },
   { name: "ق. وليد رمضان", role: "استشاري إدارة المشروعات", imagePath: "/images/instructors/walid-ramadan.jpg" },
