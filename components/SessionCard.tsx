@@ -61,14 +61,14 @@ export default function SessionCard({ session, onOpenFeedback }: SessionCardProp
             <span>تم الحل ({session.userAttempt?.totalPoints} نقطة)</span>
           </span>
         ) : session.isUnlocked ? (
-          <span className="bg-gold/20 text-gold-dark font-extrabold text-xs px-3 py-1 rounded-full flex items-center gap-1 animate-pulse border border-gold/30">
-            <Unlock className="w-3.5 h-3.5 text-gold-dark" />
-            <span>مفتوحة للكويز</span>
+          <span className="bg-emerald-100 text-emerald-800 font-extrabold text-xs px-3 py-1 rounded-full flex items-center gap-1 border border-emerald-300 shadow-sm">
+            <Unlock className="w-3.5 h-3.5 text-emerald-600" />
+            <span>انتهت المحاضرة — الكويز متاح</span>
           </span>
         ) : (
           <span className="bg-gray-100 text-gray-500 font-bold text-xs px-3 py-1 rounded-full flex items-center gap-1">
             <Lock className="w-3.5 h-3.5" />
-            <span>مغلقة</span>
+            <span>لم تنتهِ بعد</span>
           </span>
         )}
       </div>
@@ -144,21 +144,31 @@ export default function SessionCard({ session, onOpenFeedback }: SessionCardProp
 
         <div className="flex items-center gap-2">
           {!isSolved && session.isUnlocked ? (
-            <Link
-              href={`/session/${session.id}/quiz`}
-              className="flex-1 py-3 px-4 bg-olive hover:bg-olive-dark text-white rounded-2xl text-xs font-black shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group cursor-pointer"
-            >
-              <Sparkles className="w-4 h-4 text-gold" />
-              <span>ابدأ كويز المحاضرة ({session.questionCount} أسئلة)</span>
-              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
-            </Link>
+            session.questionCount > 0 ? (
+              <Link
+                href={`/session/${session.id}/quiz`}
+                className="flex-1 py-3 px-4 bg-olive hover:bg-olive-dark text-white rounded-2xl text-xs font-black shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4 text-gold" />
+                <span>ابدأ كويز المحاضرة ({session.questionCount} أسئلة)</span>
+                <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+              </Link>
+            ) : (
+              <button
+                onClick={() => alert("هذه المحاضرة لا تحتوي على أسئلة أو كويز حالياً.")}
+                className="flex-1 py-3 px-4 bg-gray-200/80 hover:bg-gray-200 text-gray-500 rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer border border-gray-300/50 opacity-75"
+              >
+                <Sparkles className="w-4 h-4 text-gray-400 opacity-50" />
+                <span>لا يوجد كويز لهذه المحاضرة 🚫</span>
+              </button>
+            )
           ) : !session.isUnlocked ? (
             <button
               disabled
               className="w-full py-3 px-4 bg-gray-200 text-gray-500 rounded-2xl text-xs font-bold flex items-center justify-center gap-2 cursor-not-allowed"
             >
-              <Lock className="w-4 h-4" />
-              <span>الكويز مغلق حالياً</span>
+              <Lock className="w-4 h-4 text-gray-400" />
+              <span>في انتظار انتهاء المحاضرة لفتح الكويز ⏳</span>
             </button>
           ) : null}
 

@@ -14,7 +14,25 @@ model User {
   role       String        @default("STUDENT") // "ADMIN" | "STUDENT"
   totalScore Int           @default(0)
   attempts   QuizAttempt[]
+  foodOrders FoodOrder[]
   createdAt  DateTime      @default(now())
+}
+
+model FoodFormState {
+  id        Int     @id @default(1)
+  isOpen    Boolean @default(false)
+  activeDay String  @default("اليوم الأول: الخميس 13 أغسطس")
+}
+
+model FoodOrder {
+  id             Int      @id @default(autoincrement())
+  userId         Int
+  user           User     @relation(fields: [userId], references: [id])
+  day            String
+  restaurantName String
+  mealName       String
+  price          Float    @default(0)
+  createdAt      DateTime @default(now())
 }
 
 model Instructor {
@@ -72,6 +90,16 @@ model Feedback {
   id         Int      @id @default(autoincrement())
   sessionId  Int
   session    Session  @relation(fields: [sessionId], references: [id])
+  rating     Int      @default(5)
   reviewText String
+  createdAt  DateTime @default(now())
+}
+
+model GeneralFeedback {
+  id         Int      @id @default(autoincrement())
+  category   String   // "PROGRAM" | "TEAM_MEMBER" | "INSTRUCTOR" | "MEDIA" | "CATERING"
+  targetName String?  // Name of team member or instructor if applicable
+  rating     Int      @default(5)
+  reviewText String?
   createdAt  DateTime @default(now())
 }

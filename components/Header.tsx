@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-import { LogOut, Trophy, LayoutDashboard, Shield, Sparkles } from "lucide-react";
+import { LogOut, Trophy, LayoutDashboard, Shield, Sparkles, Home } from "lucide-react";
 
 interface HeaderProps {
   user?: {
@@ -31,25 +31,36 @@ export default function Header({ user }: HeaderProps) {
     <header className="olive-gradient text-white border-b-4 border-gold sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Logo & Title */}
-        <Link href={user?.role === "ADMIN" ? "/admin" : "/dashboard"} className="flex items-center gap-3 group">
-          <div className="relative w-12 h-12 rounded-full border-2 border-gold overflow-hidden bg-white p-0.5 shadow-md transition-transform group-hover:scale-105">
-            <Image
-              src="/images/branding/logo.jpg"
-              alt="أثر"
-              width={48}
-              height={48}
-              className="w-full h-full object-cover rounded-full"
-            />
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="flex items-center gap-2">
+            <div className="relative w-12 h-12 rounded-full border-2 border-gold overflow-hidden bg-white p-0.5 shadow-md transition-transform group-hover:scale-105">
+              <Image
+                src="/images/branding/clan-logo.png"
+                alt="لوجو عشيرة الجوالة"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="relative w-12 h-12 rounded-full border-2 border-gold overflow-hidden bg-white p-0.5 shadow-md transition-transform group-hover:scale-105">
+              <Image
+                src="/images/branding/logo.jpg"
+                alt="أثر"
+                width={48}
+                height={48}
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-black text-xl text-white tracking-wide">أثر</span>
+              <span className="font-black text-xl text-white tracking-wide">منصة أثر</span>
               <span className="bg-gold text-olive-dark text-[10px] font-black px-2 py-0.5 rounded-full">
                 إعداد القادة
               </span>
             </div>
             <p className="text-[11px] text-gold/90 font-bold hidden sm:block">
-              القائد الحقيقي يصنع أثرًا
+              عشيرة جوالة كلية الهندسة — جامعة عين شمس
             </p>
           </div>
         </Link>
@@ -57,6 +68,7 @@ export default function Header({ user }: HeaderProps) {
         {/* Navigation Links */}
         {user && (
           <nav className="flex items-center gap-2 md:gap-4">
+
             {user.role === "ADMIN" ? (
               <Link
                 href="/admin"
@@ -83,17 +95,19 @@ export default function Header({ user }: HeaderProps) {
               </Link>
             )}
 
-            <Link
-              href="/leaderboard"
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                pathname === "/leaderboard"
-                  ? "bg-gold text-olive-dark shadow-md"
-                  : "bg-white/10 hover:bg-white/20 text-white"
-              }`}
-            >
-              <Trophy className="w-4 h-4 text-gold-light" />
-              <span>لوحة الشرف</span>
-            </Link>
+            {user.role === "ADMIN" && (
+              <Link
+                href="/leaderboard"
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                  pathname === "/leaderboard"
+                    ? "bg-gold text-olive-dark shadow-md"
+                    : "bg-white/10 hover:bg-white/20 text-white"
+                }`}
+              >
+                <Trophy className="w-4 h-4 text-gold-light" />
+                <span>لوحة الشرف والنتائج</span>
+              </Link>
+            )}
 
             {/* User Profile Pill */}
             <div className="hidden md:flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-xl border border-white/15">

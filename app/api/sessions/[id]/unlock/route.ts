@@ -17,20 +17,15 @@ export async function POST(
       return NextResponse.json({ error: "رقم الجلسة غير صحيح" }, { status: 400 });
     }
 
-    // MANDATORY RULE: Single transaction to Lock all sessions first, then Unlock the targeted session
-    await prisma.$transaction([
-      prisma.session.updateMany({
-        data: { isUnlocked: false },
-      }),
-      prisma.session.update({
-        where: { id: sessionId },
-        data: { isUnlocked: true },
-      }),
-    ]);
+    // Unlock targeted session without locking previously unlocked sessions
+    await prisma.session.update({
+      where: { id: sessionId },
+      data: { isUnlocked: true },
+    });
 
     return NextResponse.json({
       success: true,
-      message: `تم فتح الجلسة رقم ${sessionId} وقفل جميع الجلسات الأخرى بنجاح.`,
+      message: `تم إعلان انتهاء المحاضرة رقم ${sessionId} وفتح الكويز بنجاح.`,
     });
   } catch (error) {
     console.error("Unlock session error:", error);

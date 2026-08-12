@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 import { Trophy, Medal, Zap, Award, Sparkles, Users, BookOpen } from "lucide-react";
 
 interface Session {
@@ -86,6 +87,30 @@ export default function LeaderboardPage() {
   const top1 = leaderboard[0];
   const top2 = leaderboard[1];
   const top3 = leaderboard[2];
+
+  if (user && user.role !== "ADMIN") {
+    return (
+      <div className="min-h-screen flex flex-col bg-sand">
+        <Header user={user} />
+        <main className="flex-1 max-w-xl w-full mx-auto p-4 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-3xl shadow-2xl text-center space-y-4 border border-olive/20">
+            <Trophy className="w-16 h-16 text-gold mx-auto" />
+            <h1 className="text-2xl font-black text-olive-dark">لوحة النتائج والشرف الخاصة بالإدارة</h1>
+            <p className="text-xs sm:text-sm font-bold text-dark/70 leading-relaxed">
+              لوحة الشرف والنتائج التنافسية الإجمالية مخصصة لهيئة الإدارة فقط. يمكنك متابعة مجموع نقاطك الخاصة وإنجازاتك من خلال لوحة الجلسات.
+            </p>
+            <Link
+              href="/dashboard"
+              className="inline-block px-8 py-3.5 bg-olive text-white rounded-2xl text-xs font-black shadow-lg hover:bg-olive-dark transition-all"
+            >
+              العودة للوحة الجلسات 🚀
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-sand">

@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Compass, User, Lock, ArrowLeft, Footprints, ShieldCheck } from "lucide-react";
+import { Compass, User, Lock, ArrowLeft, Footprints, ShieldCheck, Home } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -61,20 +62,39 @@ export default function LoginPage() {
         <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-olive/15 overflow-hidden transition-all">
           {/* Header Section */}
           <div className="olive-gradient p-8 text-white text-center relative overflow-hidden">
+            <Link
+              href="/"
+              className="absolute top-4 right-4 z-20 inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/30 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-xl border border-white/20 transition-all shadow-sm"
+            >
+              <Home className="w-3.5 h-3.5" />
+              <span>الرئيسية</span>
+            </Link>
             <div className="absolute top-0 right-0 p-4 opacity-10">
               <Compass className="w-32 h-32 text-gold" />
             </div>
 
-            {/* Logo */}
-            <div className="relative w-24 h-24 mx-auto mb-3 rounded-full border-4 border-gold/60 overflow-hidden shadow-lg bg-white p-1">
-              <Image
-                src="/images/branding/logo.jpg"
-                alt="لوجو أثر"
-                width={96}
-                height={96}
-                className="w-full h-full object-cover rounded-full"
-                priority
-              />
+            {/* Dual Logos */}
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <div className="relative w-20 h-20 rounded-full border-4 border-gold/60 overflow-hidden shadow-lg bg-white p-1">
+                <Image
+                  src="/images/branding/clan-logo.png"
+                  alt="لوجو عشيرة الجوالة"
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-contain"
+                  priority
+                />
+              </div>
+              <div className="relative w-20 h-20 rounded-full border-4 border-gold/60 overflow-hidden shadow-lg bg-white p-1">
+                <Image
+                  src="/images/branding/logo.jpg"
+                  alt="لوجو أثر"
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-cover rounded-full"
+                  priority
+                />
+              </div>
             </div>
 
             <h1 className="text-2xl font-black text-white tracking-wide">
@@ -85,7 +105,7 @@ export default function LoginPage() {
             </p>
             <div className="inline-block mt-3 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-gold/30">
               <span className="text-xs text-sand font-bold">
-                "القائد الحقيقي يصنع أثرًا"
+                "القيادة لا تُولد، ولكن تُبنَى ليبقى أثرها"
               </span>
             </div>
           </div>

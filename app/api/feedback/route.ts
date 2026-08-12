@@ -6,13 +6,14 @@ export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
-    const { sessionId, reviewText } = await request.json();
+    const { sessionId, rating, reviewText } = await request.json();
 
     if (!sessionId || !reviewText || typeof reviewText !== "string" || !reviewText.trim()) {
       return NextResponse.json({ error: "يرجى اختيار المحاضرة وكتابة نص التقييم" }, { status: 400 });
     }
 
     const parsedSessionId = typeof sessionId === "string" ? parseInt(sessionId, 10) : sessionId;
+    const parsedRating = typeof rating === "number" && rating >= 1 && rating <= 5 ? rating : 5;
 
     const session = await prisma.session.findUnique({
       where: { id: parsedSessionId },
@@ -23,9 +24,10 @@ export async function POST(request: Request) {
     }
 
     // Save strictly WITHOUT userId or IP address for 100% total anonymity
-    const feedback = await prisma.feedback.create({
+    const feedback = await (prisma.feedback as any).create({
       data: {
         sessionId: parsedSessionId,
+        rating: parsedRating,
         reviewText: reviewText.trim(),
       },
     });
@@ -55,7 +57,7 @@ export async function GET(request: Request) {
       ? { sessionId: parseInt(sessionIdParam, 10) }
       : {};
 
-    const feedbacks = await prisma.feedback.findMany({
+    const feedbacks = await (prisma.feedback as any).findMany({
       where: whereCondition,
       orderBy: { createdAt: "desc" },
       include: {
@@ -68,9 +70,10 @@ export async function GET(request: Request) {
       },
     });
 
-    const formattedFeedbacks = feedbacks.map((fb) => ({
+    const formattedFeedbacks = feedbacks.map((fb: any) => ({
       id: fb.id,
       sessionId: fb.sessionId,
+      rating: fb.rating ?? 5,
       reviewText: fb.reviewText,
       createdAt: fb.createdAt,
       sessionTitle: `محاضرة #${fb.session.order}: ${fb.session.title}`,

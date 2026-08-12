@@ -19,16 +19,16 @@ async function main() {
 
   // 2. إدخال المحاضرين (10 محاضرين)
   const instructorsData = [
-    { name: "أشرف أنور", bio: "قائد ومحاضر متميز في التنمية البشرية وقيادة الذات والإرث الكشفي", imagePath: null },
-    { name: "فاطمة الزهراء", bio: "متخصصة في إدارة الوقت والأولويات والتطوير المؤسسي", imagePath: "/images/instructors/fatma-alzahraa.jpg" },
-    { name: "أحمد علي", bio: "خبير في بناء وتطوير مهارات القادة الشبان", imagePath: "/images/instructors/ahmed-ali.jpg" },
-    { name: "وليد رمضان", bio: "مدرب متألق في ديناميكيات وديناميكية فرق العمل", imagePath: "/images/instructors/walid-ramadan.jpg" },
-    { name: "مريم مانشي", bio: "متخصصة في التحفيز وإشعال الشغف وتوجيه الطاقات", imagePath: "/images/instructors/mariam-manshi.jpg" },
-    { name: "أحمد بحري", bio: "مستشار التخطيط الاستراتيجي وصناعة الرؤية المستقبلية", imagePath: "/images/instructors/ahmed-bahri.jpg" },
-    { name: "يوسف شوكت", bio: "باحث ومدرب في استراتيجيات الذكاءات المتعددة", imagePath: "/images/instructors/yousef-shawkat.jpg" },
-    { name: "صلاح التوني", bio: "خبير حل المشكلات المعقدة واتخاذ القرارات الإستراتيجية", imagePath: "/images/instructors/salah-eltouni.jpg" },
-    { name: "حمدي فتحي", bio: "مستشار إدارة المخاطر وتأهيل قادة المستقبل", imagePath: "/images/instructors/hamdi-fathi.jpg" },
-    { name: "أحمد ماهر", bio: "متخصص في قيادة التغيير وإدارة المقاومة المؤسسية", imagePath: null },
+    { name: "أشرف أنور", bio: "قائد هيئة التدريب، وقائد عشائر جامعة عين شمس سابقاً، وقائد مكتب تدريب جوالة هندسة عين شمس، ومدير عام المعلومات وقواعد البيانات بشركة جابكو للبترول", imagePath: "/images/instructors/ashraf-anwar.jpg" },
+    { name: "فاطمة الزهراء", bio: "Senior Sustainability Engineer ومكتب تدريب الهندسة، متخصصة في إدارة الوقت والأولويات", imagePath: "/images/instructors/fatma-alzahraa.jpg" },
+    { name: "أحمد علي", bio: "المدير الإقليمي بشركة فيرتيميد انترناشونال، وقائد منتخب الجامعة وعضو مكتب تدريب عين شمس سابقاً", imagePath: "/images/instructors/ahmed-ali.jpg" },
+    { name: "وليد رمضان", bio: "محاضر دولي (PMP, PRMG) واستشاري إدارة المشروعات، وقائد سابق لعشيرة جوالة هندسة عين شمس", imagePath: "/images/instructors/walid-ramadan.jpg" },
+    { name: "مريم مانشي", bio: "مهندسة طاقة متجددة ورائدة كبرى سابقاً بعشيرة الجوالة، متخصصة في التحفيز وإشعال الشغف", imagePath: "/images/instructors/mariam-manshi.jpg" },
+    { name: "أحمد بحري", bio: "مساعد كبير مفوضي الكشافة البحرية المصرية، والمستشار القانوني لبحرية القاهرة وعضو مكتب التدريب", imagePath: "/images/instructors/ahmed-bahri.jpg" },
+    { name: "يوسف شوكت", bio: "Civil Engineer & Team Leader، ومفوض الجوالة ببحرية القاهرة وقائد عشائر جامعة عين شمس وهندسة الأسبق", imagePath: "/images/instructors/yousef-shawkat.jpg" },
+    { name: "حمدي فتحي", bio: "مدير عام بالبنك الأهلي المصري وقائد سابق لعشيرة الجوالة، ومستشار إدارة المخاطر وتأهيل القادة", imagePath: "/images/instructors/hamdi-fathi.jpg" },
+    { name: "أحمد ماهر", bio: "متخصص في قيادة التغيير وإدارة المقاومة المؤسسية وتأهيل فرق العمل", imagePath: "/images/instructors/ahmed-maher.jpg" },
+    { name: "صلاح التوني", bio: "مدير مشروعات وقائد سابق لعشيرة جوالة هندسة عين شمس، وخبير حل المشكلات المعقدة واتخاذ القرار", imagePath: "/images/instructors/salah-eltouni.jpg" },
   ];
 
   const instructorMap: Record<string, number> = {};
@@ -38,7 +38,11 @@ async function main() {
       where: { name: instData.name },
     });
     if (existing) {
-      instructorMap[instData.name] = existing.id;
+      const updated = await prisma.instructor.update({
+        where: { id: existing.id },
+        data: instData,
+      });
+      instructorMap[instData.name] = updated.id;
     } else {
       const created = await prisma.instructor.create({
         data: instData,
@@ -118,7 +122,7 @@ async function main() {
       title: "حل المشكلات واتخاذ القرار",
       phaseName: "قيادة الفريق",
       day: "اليوم الثاني: الجمعة",
-      instructorName: "صلاح التوني",
+      instructorName: "أشرف أنور",
     },
     {
       order: 11,
@@ -136,7 +140,7 @@ async function main() {
     },
     {
       order: 13,
-      title: "صناعة قادة المستقبل",
+      title: "التفويض والتمكين والتوجيه والكوتشينج",
       phaseName: "الإرث",
       day: "اليوم الثالث: السبت",
       instructorName: "حمدي فتحي",
@@ -146,7 +150,7 @@ async function main() {
       title: "ترك الأثر وصناعة الإرث",
       phaseName: "الإرث",
       day: "اليوم الثالث: السبت",
-      instructorName: "أشرف أنور",
+      instructorName: "صلاح التوني",
     },
   ];
 
@@ -175,42 +179,9 @@ async function main() {
       where: { sessionId: session.id },
     });
 
-    if (existingQuestionsCount === 0) {
-      await prisma.question.createMany({
-        data: [
-          {
-            sessionId: session.id,
-            text: `ما الركيزة الأساسية لموضوع "${sessData.title}" في قيادة الجوالة؟`,
-            optionA: "التواصل المستمر والوعي الذاتي",
-            optionB: "الفردية في اتخاذ القرار",
-            optionC: "تجاهل الأخطاء والتغاضي عنها",
-            optionD: "الاعتماد الكامل على الآخرين",
-            correctOption: "A",
-          },
-          {
-            sessionId: session.id,
-            text: `كيف يتعامل القائد الجوال الناجح خلال جلسة "${sessData.title}"؟`,
-            optionA: "الإنصات الفعال وتشجيع روح الفريق",
-            optionB: "الاستبداد برأيه فقط",
-            optionC: "تأجيل المهام والتهرب من المسؤولية",
-            optionD: "عدم الاهتمام بالأهداف",
-            correctOption: "A",
-          },
-          {
-            sessionId: session.id,
-            text: `ما الأثر المستدام المتوقع بعد تطبيق مهارات "${sessData.title}"؟`,
-            optionA: "صناعة بيئة إيجابية تترك أثراً مستداماً",
-            optionB: "زيادة حدة الخلافات بين الأعضاء",
-            optionC: "إحباط أفراد الفريق وتفادي التغيير",
-            optionD: "تراجع أداء العشيرة",
-            correctOption: "A",
-          },
-        ],
-      });
-    }
   }
 
-  console.log("✅ تم إدخال الـ 14 جلسة والأسئلة التجريبية بنجاح!");
+  console.log("✅ تم إدخال الـ 14 جلسة والمحاضرين بنجاح!");
   console.log("🎉 اكتمل عملية الـ Seed بنجاح!");
 }
 

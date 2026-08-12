@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SessionCard from "@/components/SessionCard";
-import { Sparkles, Trophy, Compass, MessageSquare, Check, X, ShieldCheck } from "lucide-react";
+import GeneralFeedbackSection from "@/components/GeneralFeedbackSection";
+import FoodOrderModal from "@/components/FoodOrderModal";
+import { Sparkles, Trophy, Compass, MessageSquare, Check, X, ShieldCheck, Star } from "lucide-react";
 
 export default function StudentDashboard() {
   const [user, setUser] = useState<any>(null);
@@ -18,6 +20,8 @@ export default function StudentDashboard() {
     sessionTitle: string;
   }>({ isOpen: false, sessionId: null, sessionTitle: "" });
   const [reviewText, setReviewText] = useState("");
+  const [rating, setRating] = useState<number>(5);
+  const [hoverRating, setHoverRating] = useState<number>(0);
   const [submittingFeedback, setSubmittingFeedback] = useState(false);
   const [feedbackSuccess, setFeedbackSuccess] = useState(false);
   const [feedbackError, setFeedbackError] = useState("");
@@ -46,6 +50,8 @@ export default function StudentDashboard() {
   const handleOpenFeedback = (sessionId: number, sessionTitle: string) => {
     setFeedbackModal({ isOpen: true, sessionId, sessionTitle });
     setReviewText("");
+    setRating(5);
+    setHoverRating(0);
     setFeedbackSuccess(false);
     setFeedbackError("");
   };
@@ -63,6 +69,7 @@ export default function StudentDashboard() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           sessionId: feedbackModal.sessionId,
+          rating,
           reviewText: reviewText.trim(),
         }),
       });
@@ -94,7 +101,9 @@ export default function StudentDashboard() {
     );
   }
 
-  const activeUnlockedSession = sessions.find((s) => s.isUnlocked);
+  const latestUnsolvedUnlockedSession =
+    sessions.slice().reverse().find((s) => s.isUnlocked && !s.userAttempt?.isSubmitted) ||
+    sessions.slice().reverse().find((s) => s.isUnlocked);
   const completedCount = sessions.filter((s) => s.userAttempt?.isSubmitted).length;
 
   return (
@@ -141,7 +150,7 @@ export default function StudentDashboard() {
         </div>
 
         {/* Current Active Unlocked Session Callout */}
-        {activeUnlockedSession && (
+        {latestUnsolvedUnlockedSession && (
           <div className="bg-gradient-to-r from-gold/20 via-gold/10 to-sand p-6 rounded-3xl border-2 border-gold shadow-lg relative overflow-hidden">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
@@ -153,12 +162,12 @@ export default function StudentDashboard() {
                     المحاضرة المفتوحة الآن!
                   </span>
                   <h2 className="text-lg font-black text-olive-dark mt-1">
-                    #{activeUnlockedSession.order} — {activeUnlockedSession.title}
+                    #{latestUnsolvedUnlockedSession.order} — {latestUnsolvedUnlockedSession.title}
                   </h2>
                 </div>
               </div>
               <a
-                href={`/session/${activeUnlockedSession.id}/quiz`}
+                href={`/session/${latestUnsolvedUnlockedSession.id}/quiz`}
                 className="w-full sm:w-auto px-6 py-3 bg-olive hover:bg-olive-dark text-white rounded-xl text-xs font-black shadow-md transition-all text-center"
               >
                 الدخول للكويز مباشرة ⚡
@@ -166,6 +175,9 @@ export default function StudentDashboard() {
             </div>
           </div>
         )}
+
+        {/* Food Order Modal & Banner Component */}
+        <FoodOrderModal />
 
         {/* Sessions Section */}
         <div className="space-y-6">
@@ -185,6 +197,9 @@ export default function StudentDashboard() {
             ))}
           </div>
         </div>
+
+        {/* Comprehensive General Feedback Section */}
+        <GeneralFeedbackSection />
       </main>
 
       {/* Feedback Modal */}
@@ -219,6 +234,42 @@ export default function StudentDashboard() {
                     ⚠️ {feedbackError}
                   </div>
                 )}
+
+                {/* Star Rating Section */}
+                <div className="bg-sand/40 p-3.5 rounded-2xl border border-olive/15 space-y-2">
+                  <label className="block text-xs font-black text-olive">
+                    مدى استقبالك واستفادتك من المحاضرة:
+                  </label>
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    <div className="flex items-center gap-1 dir-ltr">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          onClick={() => setRating(star)}
+                          onMouseEnter={() => setHoverRating(star)}
+                          onMouseLeave={() => setHoverRating(0)}
+                          className="p-1 focus:outline-none transition-transform hover:scale-125"
+                        >
+                          <Star
+                            className={`w-7 h-7 transition-colors ${
+                              star <= (hoverRating || rating)
+                                ? "text-gold fill-gold drop-shadow-sm"
+                                : "text-gray-300 fill-gray-100"
+                            }`}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                    <span className="text-xs font-black text-olive bg-white px-3 py-1 rounded-xl border border-olive/15 shadow-sm">
+                      {rating === 1 && "⭐ ضعيف (1/5)"}
+                      {rating === 2 && "⭐⭐ مقبول (2/5)"}
+                      {rating === 3 && "⭐⭐⭐ جيد (3/5)"}
+                      {rating === 4 && "⭐⭐⭐⭐ جيد جداً (4/5)"}
+                      {rating === 5 && "⭐⭐⭐⭐⭐ ممتاز (5/5)"}
+                    </span>
+                  </div>
+                </div>
 
                 <div>
                   <label className="block text-xs font-bold text-olive mb-1.5">

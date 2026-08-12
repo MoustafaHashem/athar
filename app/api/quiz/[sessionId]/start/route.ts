@@ -40,7 +40,7 @@ export async function POST(
     }
 
     if (!session.isUnlocked && currentUser.role !== "ADMIN") {
-      return NextResponse.json({ error: "هذه الجلسة مغلقة حالياً من قِبَل الإدارة" }, { status: 403 });
+      return NextResponse.json({ error: "هذه المحاضرة لم تنتهِ بعد، وسيتم فتح الكويز فور انتهاء المحاضرة بواسطة إدارة الدراسة." }, { status: 403 });
     }
 
     // Check existing attempt

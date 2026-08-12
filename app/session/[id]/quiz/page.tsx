@@ -289,7 +289,7 @@ export default function QuizPage() {
               <div className="flex justify-between items-center text-gold-dark">
                 <span className="flex items-center gap-1">
                   <Zap className="w-4 h-4 text-gold fill-gold" />
-                  <span>بونص السرعة:</span>
+                  <span>بونص سرعة الحل (لأصحاب الدرجة الكاملة فقط):</span>
                 </span>
                 <span className="font-black text-gold">+{result.speedBonus} نقطة</span>
               </div>

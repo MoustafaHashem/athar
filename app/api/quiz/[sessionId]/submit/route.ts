@@ -58,18 +58,27 @@ export async function POST(
         }
       }
 
-      // 3. Base Score
+      // 3. Base Score (Highest Weight: 10 points per correct answer)
       const baseScore = correctCount * 10;
 
-      // 4. Speed Bonus calculation (up to 15 points)
+      // 4. Speed Bonus calculation (Lowest Weight: Max 5 points, STRICTLY ONLY for 100% Full Marks)
       const startTime = new Date(attempt.startTime);
       const timeTakenSeconds = Math.max(1, (submitTime.getTime() - startTime.getTime()) / 1000);
-      const timeLimitSeconds = Math.max(60, questions.length * 60);
 
-      const speedBonusFraction = Math.max(0, (timeLimitSeconds - timeTakenSeconds) / timeLimitSeconds);
-      const speedBonus = Math.round(speedBonusFraction * 15);
+      let speedBonus = 0;
+      const isFullScore = questions.length > 0 && correctCount === questions.length;
 
-      // 5. Order Bonus calculation based on submission order within this session
+      if (isFullScore) {
+        if (timeTakenSeconds <= 30) {
+          speedBonus = 5;
+        } else if (timeTakenSeconds <= 60) {
+          speedBonus = 3;
+        } else if (timeTakenSeconds <= 90) {
+          speedBonus = 1;
+        }
+      }
+
+      // 5. Order Bonus calculation (Top 5 submissions only, max 8 points)
       const alreadySubmittedCount = await tx.quizAttempt.count({
         where: {
           sessionId: sessionId,
@@ -79,10 +88,10 @@ export async function POST(
 
       const submissionOrder = alreadySubmittedCount + 1; // 1-based order
       let orderBonus = 0;
-      if (submissionOrder === 1) orderBonus = 10;
-      else if (submissionOrder === 2) orderBonus = 7;
-      else if (submissionOrder === 3) orderBonus = 5;
-      else if (submissionOrder === 4) orderBonus = 3;
+      if (submissionOrder === 1) orderBonus = 8;
+      else if (submissionOrder === 2) orderBonus = 6;
+      else if (submissionOrder === 3) orderBonus = 4;
+      else if (submissionOrder === 4) orderBonus = 2;
       else if (submissionOrder === 5) orderBonus = 1;
       else orderBonus = 0;
 

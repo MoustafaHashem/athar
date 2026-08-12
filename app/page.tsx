@@ -8,13 +8,13 @@ export default function LandingPage() {
     {
       name: "أحمد مشعل",
       role: "قائد الدراسة",
-      imagePath: null,
+      imagePath: "/images/team/ahmed-meshal.jpg",
       badgeColor: "bg-gold text-olive-dark border-gold/40",
     },
     {
       name: "تسنيم أحمد",
       role: "قائدة الدراسة",
-      imagePath: null,
+      imagePath: "/images/team/tasneem-ahmed.jpg",
       badgeColor: "bg-gold text-olive-dark border-gold/40",
     },
     {
@@ -26,99 +26,114 @@ export default function LandingPage() {
     {
       name: "مريم بحر",
       role: "منفذة برامج",
-      imagePath: null,
+      imagePath: "/images/team/mariam-bahr.jpg",
       badgeColor: "bg-olive text-white border-olive/30",
+    },
+    {
+      name: "محمود هشام",
+      role: "قائد السواعد",
+      imagePath: "/images/team/mahmoud-hisham.jpg",
+      badgeColor: "bg-emerald-700 text-white border-emerald-600/30",
     },
     {
       name: "نور خالد",
       role: "قائدة السكرتارية",
-      imagePath: null,
+      imagePath: "/images/team/nour-khaled.jpg",
       badgeColor: "bg-amber-600 text-white border-amber-500/30",
     },
     {
       name: "أحمد دراجون",
       role: "قائد الميديا",
-      imagePath: null,
+      imagePath: "/images/team/ahmed-dragon.jpg",
       badgeColor: "bg-blue-700 text-white border-blue-600/30",
     },
     {
       name: "جميلة توفيق",
       role: "مساعدة قائد الميديا",
-      imagePath: null,
+      imagePath: "/images/team/jamilah-tawfik.jpg",
       badgeColor: "bg-blue-600 text-white border-blue-500/30",
     },
   ];
 
-  const instructorsList = [
+  type InstructorInfo = {
+    name: string;
+    specialRole?: string;
+    bio: string;
+    imagePath: string;
+    firstOrder: number;
+    sessions: string[];
+  };
+
+  const instructorsList: InstructorInfo[] = [
     {
       name: "ق. أشرف أنور",
-      bio: "قائد ومحاضر متميز في التنمية البشرية وقيادة الذات والإرث الكشفي",
-      imagePath: null,
+      bio: "قائد عشائر جامعة عين شمس سابقاً، وقائد مكتب تدريب جوالة هندسة عين شمس، ومدير عام المعلومات وقواعد البيانات بشركة جابكو للبترول",
+      imagePath: "/images/instructors/ashraf-anwar.jpg",
       firstOrder: 1,
-      sessions: ["المحاضرة #1", "المحاضرة #2", "المحاضرة #6", "المحاضرة #14"],
+      sessions: ["المحاضرة #1", "المحاضرة #2", "المحاضرة #6", "المحاضرة #10"],
     },
     {
       name: "ق. فاطمة الزهراء",
-      bio: "متخصصة في إدارة الوقت والأولويات والتطوير المؤسسي",
+      bio: "Senior Sustainability Engineer ومكتب تدريب الهندسة، متخصصة في إدارة الوقت والأولويات",
       imagePath: "/images/instructors/fatma-alzahraa.jpg",
       firstOrder: 3,
       sessions: ["المحاضرة #3"],
     },
     {
       name: "ق. أحمد علي",
-      bio: "خبير في بناء وتطوير مهارات القادة الشبان",
+      bio: "المدير الإقليمي بشركة فيرتيميد انترناشونال، وقائد منتخب الجامعة وعضو مكتب تدريب عين شمس سابقاً",
       imagePath: "/images/instructors/ahmed-ali.jpg",
       firstOrder: 4,
       sessions: ["المحاضرة #4"],
     },
     {
       name: "ق. وليد رمضان",
-      bio: "مدرب متألق في ديناميكيات وديناميكية فرق العمل",
+      bio: "محاضر دولي (PMP, PRMG) واستشاري إدارة المشروعات، وقائد سابق لعشيرة جوالة هندسة عين شمس",
       imagePath: "/images/instructors/walid-ramadan.jpg",
       firstOrder: 5,
       sessions: ["المحاضرة #5"],
     },
     {
       name: "ق. مريم مانشي",
-      bio: "متخصصة في التحفيز وإشعال الشغف وتوجيه الطاقات",
+      bio: "مهندسة طاقة متجددة ورائدة كبرى سابقاً بعشيرة الجوالة، متخصصة في التحفيز وإشعال الشغف",
       imagePath: "/images/instructors/mariam-manshi.jpg",
       firstOrder: 7,
       sessions: ["المحاضرة #7"],
     },
     {
       name: "ق. أحمد بحري",
-      bio: "مستشار التخطيط الاستراتيجي وصناعة الرؤية المستقبلية",
+      bio: "مساعد كبير مفوضي الكشافة البحرية المصرية، والمستشار القانوني لبحرية القاهرة وعضو مكتب التدريب",
       imagePath: "/images/instructors/ahmed-bahri.jpg",
       firstOrder: 8,
       sessions: ["المحاضرة #8"],
     },
     {
       name: "ق. يوسف شوكت",
-      bio: "باحث ومدرب في استراتيجيات الذكاءات المتعددة",
+      bio: "Civil Engineer & Team Leader، ومفوض الجوالة ببحرية القاهرة وقائد عشائر جامعة عين شمس وهندسة الأسبق",
       imagePath: "/images/instructors/yousef-shawkat.jpg",
       firstOrder: 9,
       sessions: ["المحاضرة #9"],
     },
     {
-      name: "ق. صلاح التوني",
-      bio: "خبير حل المشكلات المعقدة واتخاذ القرارات الإستراتيجية",
-      imagePath: "/images/instructors/salah-eltouni.jpg",
-      firstOrder: 10,
-      sessions: ["المحاضرة #10"],
-    },
-    {
       name: "ق. حمدي فتحي",
-      bio: "مستشار إدارة المخاطر وتأهيل قادة المستقبل",
+      bio: "مدير عام بالبنك الأهلي المصري وقائد سابق لعشيرة الجوالة، ومستشار إدارة المخاطر وتأهيل القادة",
       imagePath: "/images/instructors/hamdi-fathi.jpg",
       firstOrder: 11,
       sessions: ["المحاضرة #11", "المحاضرة #13"],
     },
     {
       name: "ق. أحمد ماهر",
-      bio: "متخصص في قيادة التغيير وإدارة المقاومة المؤسسية",
-      imagePath: null,
+      bio: "مدير مشاريع، ورئيس لجنة المنح والشراكات بالاتحاد العام للكشافة والمرشدات",
+      imagePath: "/images/instructors/ahmed-maher.jpg",
       firstOrder: 12,
       sessions: ["المحاضرة #12"],
+    },
+    {
+      name: "ق. صلاح التوني",
+      bio: "مدير مشروعات وقائد سابق لعشيرة جوالة هندسة عين شمس، وخبير حل المشكلات المعقدة واتخاذ القرار",
+      imagePath: "/images/instructors/salah-eltouni.jpg",
+      firstOrder: 14,
+      sessions: ["المحاضرة #14"],
     },
   ];
 
@@ -148,11 +163,12 @@ export default function LandingPage() {
         { time: "11:50 ص - 12:40 م", title: "المحاضرة 6: التواصل الفعّال والعروض", instructor: "ق. أشرف أنور", duration: "50 دقيقة" },
         { time: "12:40 م - 02:30 م", title: "صلاة الجمعة وفترة الغداء", instructor: "-", duration: "110 دقيقة" },
         { time: "02:30 م - 03:20 م", title: "المحاضرة 7: التحفيز وإشعال الشغف", instructor: "ق. مريم مانشي", duration: "50 دقيقة" },
-        { time: "03:35 م - 04:25 م", title: "المحاضرة 8: التخطيط وصناعة الرؤية", instructor: "ق. أحمد بحري", duration: "50 دقيقة" },
-        { time: "04:25 م - 04:50 م", title: "استراحة (صلاة العصر)", instructor: "-", duration: "25 دقيقة" },
-        { time: "04:50 م - 05:40 م", title: "المحاضرة 9: الذكاءات المتعددة", instructor: "ق. يوسف شوكت", duration: "50 دقيقة" },
-        { time: "05:55 م - 06:45 م", title: "المحاضرة 10: حل المشكلات واتخاذ القرار", instructor: "ق. صلاح التوني", duration: "50 دقيقة" },
-        { time: "06:45 م - 08:00 م", title: "حلقة السمر الكشفية", instructor: "-", duration: "75 دقيقة" },
+        { time: "03:35 م - 04:35 م", title: "المحاضرة 8: التخطيط وصناعة الرؤية", instructor: "ق. أحمد بحري", duration: "60 دقيقة" },
+        { time: "04:35 م - 05:00 م", title: "استراحة (صلاة العصر)", instructor: "-", duration: "25 دقيقة" },
+        { time: "05:00 م - 05:30 م", title: "فقرة مع قيادة الدراسة", instructor: "-", duration: "30 دقيقة" },
+        { time: "05:30 م - 06:20 م", title: "المحاضرة 9: الذكاءات المتعددة", instructor: "ق. يوسف شوكت", duration: "50 دقيقة" },
+        { time: "06:35 م - 07:25 م", title: "المحاضرة 10: حل المشكلات واتخاذ القرار", instructor: "ق. أشرف أنور", duration: "50 دقيقة" },
+        { time: "07:25 م - 08:40 م", title: "حلقة السمر الكشفية", instructor: "-", duration: "75 دقيقة" },
       ],
     },
     {
@@ -163,11 +179,11 @@ export default function LandingPage() {
         { time: "09:30 ص - 10:00 ص", title: "طابور وتحية العلم", instructor: "-", duration: "30 دقيقة" },
         { time: "10:00 ص - 10:50 ص", title: "المحاضرة 11: إدارة المخاطر", instructor: "ق. حمدي فتحي", duration: "50 دقيقة" },
         { time: "11:05 ص - 11:55 ص", title: "المحاضرة 12: قيادة التغيير وإدارة المقاومة", instructor: "ق. أحمد ماهر", duration: "50 دقيقة" },
-        { time: "12:10 م - 01:00 م", title: "المحاضرة 13: صناعة قادة المستقبل", instructor: "ق. حمدي فتحي", duration: "50 دقيقة" },
+        { time: "12:10 م - 01:00 م", title: "المحاضرة 13: التفويض والتمكين والتوجيه والكوتشينج", instructor: "ق. حمدي فتحي", duration: "50 دقيقة" },
         { time: "01:00 م - 02:00 م", title: "صلاة الظهر وفترة الغداء", instructor: "-", duration: "60 دقيقة" },
-        { time: "02:00 م - 02:50 م", title: "المحاضرة 14: ترك الأثر وصناعة الإرث", instructor: "ق. أشرف أنور", duration: "50 دقيقة" },
-        { time: "03:00 م - 05:30 م", title: "نشاط بحري وتجديف", instructor: "-", duration: "150 دقيقة" },
-        { time: "05:30 م - 08:00 م", title: "حفل الختام وتسليم الأوسمة", instructor: "-", duration: "150 دقيقة" },
+        { time: "02:00 م - 02:50 م", title: "المحاضرة 14: ترك الأثر وصناعة الإرث", instructor: "ق. صلاح التوني", duration: "50 دقيقة" },
+        { time: "03:00 م - 04:30 م", title: "حفل الختام", instructor: "-", duration: "90 دقيقة" },
+        { time: "04:30 م - 07:00 م", title: "نشاط بحري وتجديف", instructor: "-", duration: "150 دقيقة" },
       ],
     },
   ];
@@ -178,14 +194,25 @@ export default function LandingPage() {
       <header className="olive-gradient text-white border-b-4 border-gold sticky top-0 z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full border-2 border-gold overflow-hidden bg-white p-0.5 shadow">
-              <Image
-                src="/images/branding/logo.jpg"
-                alt="لوجو أثر"
-                width={48}
-                height={48}
-                className="w-full h-full object-cover rounded-full"
-              />
+            <div className="flex items-center gap-2">
+              <div className="w-11 h-11 rounded-full border-2 border-gold overflow-hidden bg-white p-0.5 shadow">
+                <Image
+                  src="/images/branding/clan-logo.png"
+                  alt="لوجو عشيرة الجوالة"
+                  width={44}
+                  height={44}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="w-11 h-11 rounded-full border-2 border-gold overflow-hidden bg-white p-0.5 shadow">
+                <Image
+                  src="/images/branding/logo.jpg"
+                  alt="لوجو أثر"
+                  width={44}
+                  height={44}
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
             </div>
             <div>
               <h1 className="text-xl font-black text-white">منصة أثر</h1>
@@ -219,24 +246,36 @@ export default function LandingPage() {
             </span>
           </div>
 
-          {/* Big Logo */}
-          <div className="relative w-36 h-36 md:w-44 md:h-44 mx-auto rounded-full border-4 border-gold p-1 bg-white shadow-2xl">
-            <Image
-              src="/images/branding/logo.jpg"
-              alt="أثر"
-              width={176}
-              height={176}
-              className="w-full h-full object-cover rounded-full"
-              priority
-            />
+          {/* Dual Big Logos */}
+          <div className="flex items-center justify-center gap-4 md:gap-6">
+            <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-gold p-1 bg-white shadow-2xl hover:scale-105 transition-transform">
+              <Image
+                src="/images/branding/clan-logo.png"
+                alt="لوجو عشيرة الجوالة"
+                width={160}
+                height={160}
+                className="w-full h-full object-contain"
+                priority
+              />
+            </div>
+            <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-gold p-1 bg-white shadow-2xl hover:scale-105 transition-transform">
+              <Image
+                src="/images/branding/logo.jpg"
+                alt="لوجو أثر"
+                width={160}
+                height={160}
+                className="w-full h-full object-cover rounded-full"
+                priority
+              />
+            </div>
           </div>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
-            "القائد الحقيقي يصنع أثرًا"
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight max-w-4xl mx-auto">
+            "القيادة لا تُولد، ولكن تُبنَى ليبقى أثرها"
           </h1>
 
           <p className="text-base md:text-xl text-sand/90 font-bold max-w-2xl mx-auto leading-relaxed">
-            فيه نوعين من الناس... ناس تدخل أي مكان وتخرج منه زي ما دخلت، وناس تدخل مكان وتسيب فيه أثر يفضل موجود!
+            يبدأ القائد ببناء نفسه، ليتمكن من قيادة الآخرين قبل أن يعلمهم كيف يستمروا من بعده.
           </p>
 
           {/* Call to Action */}
@@ -286,45 +325,53 @@ export default function LandingPage() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-3xl shadow-lg border border-olive/10 space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-olive/10 text-olive flex items-center justify-center font-black text-xl">
-              1
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          <div className="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 border border-olive/15 space-y-4 flex flex-col justify-between h-full hover:-translate-y-1">
+            <div className="space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-gold text-olive-dark flex items-center justify-center font-black text-lg shadow-md border border-gold/40">
+                1
+              </div>
+              <h3 className="font-extrabold text-xl text-olive-dark">1. قيادة الذات</h3>
+              <p className="text-xs text-dark/75 font-semibold leading-relaxed">
+                اكتشاف الذات والوعي الداخلي، الذكاء العاطفي، إدارة الوقت والأولويات، وسمات القائد الناجح.
+              </p>
             </div>
-            <h3 className="font-extrabold text-lg text-olive-dark">قيادة الذات</h3>
-            <p className="text-xs text-dark/70 font-semibold leading-relaxed">
-              اكتشاف الذات والوعي الداخلي، الذكاء العاطفي، إدارة الوقت والأولويات، وسمات القائد الناجح.
-            </p>
           </div>
 
-          <div className="bg-white p-6 rounded-3xl shadow-lg border border-olive/10 space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-gold/20 text-gold-dark flex items-center justify-center font-black text-xl">
-              2
+          <div className="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 border border-olive/15 space-y-4 flex flex-col justify-between h-full hover:-translate-y-1">
+            <div className="space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-gold text-olive-dark flex items-center justify-center font-black text-lg shadow-md border border-gold/40">
+                2
+              </div>
+              <h3 className="font-extrabold text-xl text-olive-dark">2. فرق العمل</h3>
+              <p className="text-xs text-dark/75 font-semibold leading-relaxed">
+                ديناميكيات تشكيل الفريق، مهارات التواصل الفعّال والعروض، والتحفيز وإشعال الشغف.
+              </p>
             </div>
-            <h3 className="font-extrabold text-lg text-olive-dark">فرق العمل</h3>
-            <p className="text-xs text-dark/70 font-semibold leading-relaxed">
-              ديناميكيات تشكيل الفريق، مهارات التواصل الفعّال والعروض، والتحفيز وإشعال الشغف.
-            </p>
           </div>
 
-          <div className="bg-white p-6 rounded-3xl shadow-lg border border-olive/10 space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-olive/10 text-olive flex items-center justify-center font-black text-xl">
-              3
+          <div className="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 border border-olive/15 space-y-4 flex flex-col justify-between h-full hover:-translate-y-1">
+            <div className="space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-gold text-olive-dark flex items-center justify-center font-black text-lg shadow-md border border-gold/40">
+                3
+              </div>
+              <h3 className="font-extrabold text-xl text-olive-dark">3. قيادة الفريق</h3>
+              <p className="text-xs text-dark/75 font-semibold leading-relaxed">
+                التخطيط وصناعة الرؤية، الذكاءات المتعددة، حل المشكلات واتخاذ القرار، إدارة المخاطر، وقيادة التغيير وإدارة المقاومة.
+              </p>
             </div>
-            <h3 className="font-extrabold text-lg text-olive-dark">قيادة الفريق</h3>
-            <p className="text-xs text-dark/70 font-semibold leading-relaxed">
-              التخطيط وصناعة الرؤية، الذكاءات المتعددة، حل المشكلات واتخاذ القرار، وإدارة المخاطر.
-            </p>
           </div>
 
-          <div className="bg-white p-6 rounded-3xl shadow-lg border border-olive/10 space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-gold/20 text-gold-dark flex items-center justify-center font-black text-xl">
-              4
+          <div className="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 border border-olive/15 space-y-4 flex flex-col justify-between h-full hover:-translate-y-1">
+            <div className="space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-gold text-olive-dark flex items-center justify-center font-black text-lg shadow-md border border-gold/40">
+                4
+              </div>
+              <h3 className="font-extrabold text-xl text-olive-dark">4. الإرث والأثر</h3>
+              <p className="text-xs text-dark/75 font-semibold leading-relaxed">
+                التفويض والتمكين والتوجيه والكوتشينج، وترك الأثر وصناعة الإرث المستدام.
+              </p>
             </div>
-            <h3 className="font-extrabold text-lg text-olive-dark">الإرث والأثر</h3>
-            <p className="text-xs text-dark/70 font-semibold leading-relaxed">
-              قيادة التغيير وإدارة المقاومة، صناعة قادة المستقبل، وترك الأثر والصناعة الدائمة للإرث.
-            </p>
           </div>
         </div>
       </section>
@@ -416,7 +463,7 @@ export default function LandingPage() {
                       alt={inst.name}
                       width={96}
                       height={96}
-                      className="w-full h-full object-cover rounded-full"
+                      className="w-full h-full object-cover object-center rounded-full"
                     />
                   ) : (
                     <div className="w-full h-full rounded-full bg-sand flex items-center justify-center text-olive">
@@ -430,7 +477,14 @@ export default function LandingPage() {
                   <h3 className="font-black text-base text-olive-dark">
                     {inst.name}
                   </h3>
-                  <p className="text-xs text-dark/70 font-semibold leading-relaxed min-h-[40px]">
+                  {inst.specialRole && (
+                    <div className="inline-block my-0.5">
+                      <span className="bg-gold text-olive-dark border border-gold/40 text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-sm">
+                        🌟 {inst.specialRole}
+                      </span>
+                    </div>
+                  )}
+                  <p className="text-xs text-dark/70 font-semibold leading-relaxed min-h-[48px]">
                     {inst.bio}
                   </p>
                 </div>
@@ -487,7 +541,7 @@ export default function LandingPage() {
                       alt={member.name}
                       width={112}
                       height={112}
-                      className="w-full h-full object-cover rounded-full"
+                      className="w-full h-full object-cover object-center rounded-full"
                     />
                   ) : (
                     <div className="w-full h-full rounded-full bg-olive/10 flex items-center justify-center text-olive">
