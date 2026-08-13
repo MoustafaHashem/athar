@@ -91,17 +91,17 @@ async function main() {
     },
     {
       order: 6,
-      title: "التواصل الفعّال والعروض",
-      phaseName: "فرق العمل",
-      day: "اليوم الثاني: الجمعة",
-      instructorName: "أشرف أنور",
-    },
-    {
-      order: 7,
       title: "التحفيز وإشعال الشغف",
       phaseName: "فرق العمل",
       day: "اليوم الثاني: الجمعة",
       instructorName: "مريم مانشي",
+    },
+    {
+      order: 7,
+      title: "التواصل الفعّال والعروض",
+      phaseName: "فرق العمل",
+      day: "اليوم الثاني: الجمعة",
+      instructorName: "أشرف أنور",
     },
     {
       order: 8,
